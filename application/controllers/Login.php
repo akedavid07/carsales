@@ -14,6 +14,46 @@ class Login extends CI_Controller {
 	}
         
        
+	public function signup()
+	{	
+        $session = $this->session->userdata('isLogin');
+
+        if($session == FALSE) {
+            $this->load->view('view_register');
+        } else {
+            redirect('admin/dashboard');
+        }
+	}
+
+    public function register(){
+        if($_POST){
+        $firstname = $this->input->post("firstname");
+        $lastname = $this->input->post("lastname");
+        $phone_number = $this->input->post("phone_number");
+        $email = $this->input->post("email");
+        $password = $this->input->post("password");
+
+        $postData = array(
+            "su"    =>  1,
+            "type"  =>  "employee",
+            "position" =>   "Car Dealer",
+            "email" =>  $email,
+            "password"  =>  md5($password),
+            "first_name"    =>  $firstname,
+            "last_name" =>  $lastname,
+            "mobile"  =>  $phone_number,
+            "gender"  =>    "",
+            "birthday"  => "",
+            "address"   => ""
+        );
+
+$this->db->insert("users", $postData);
+        redirect("login?msg=1");
+    }else{
+        redirect("signup?msg=2");
+    }
+    }
+
     //just to check if empty, if not then verify function call and verified hoile returns to this function
     public function checklogin() {   // fields name, Boxes name to show, the checks functions
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');

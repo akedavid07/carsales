@@ -13,8 +13,8 @@ class Pages extends CI_Controller {
 
 	public function index()
 	{	
-		// $data['vehicles'] = $this->model_vehicle->getAll();
-		$data['vehicles'] = $this->model_vehicle->getLatest();
+		 $data['vehicles'] = $this->model_vehicle->getAll();
+//		$data['vehicles'] = $this->model_vehicle->getLatest();
 		$data['featured'] = $this->model_vehicle->getFeatured();
 		$data['manufacturers'] = $this->model_manufacturer->getAllManufacturers();
 		$data['models'] = $this->model_car_model->getAllModels();
@@ -31,6 +31,17 @@ class Pages extends CI_Controller {
 		$this->parser->parse('public/view_single.php', $data);
 	}
 
+	public function about(){
+		$this->load->view('public/partials/view_public_header.php');
+		$this->load->view("public/about");
+		$this->load->view('public/partials/view_public_footer.php');
+	}
+
+	public function contact(){
+		$this->load->view('public/partials/view_public_header.php');
+		$this->load->view("public/contact");
+//		$this->load->view('public/partials/view_public_footer.php');
+	}
 
 
 }
