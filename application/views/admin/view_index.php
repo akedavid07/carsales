@@ -11,10 +11,13 @@
 						  <span class="count_top"><i class="glyphicon glyphicon-bed"></i> Total Vehicles </span>
 						  <div class="count"><?php echo count($vehicles); ?></div>
 					</div>
+					<?php if($this->session->userdata("type") == "admin"){ ?>
+
 					<div class="col-md-6 col-sm-4 col-xs-6 tile_stats_count">
 						  <span class="count_top"><i class="glyphicon glyphicon-bed"></i> Dealers</span>
 						  <div class="count"><?php echo count($employees); ?></div>
 					</div>
+					<?php } ?>
 					<!--div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count">
 						  <span class="count_top"><i class="glyphicon glyphicon-bed"></i>Customer </span>
 						  <div class="count"><?php echo count($customers); ?></div>

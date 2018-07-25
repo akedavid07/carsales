@@ -172,13 +172,13 @@
                                     <th>Category</th>
                                     <th>Added on</th>
                                     <th>Status</th>
-                                    <th>Bought $</th>
+                                    <th>Bought (N)</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                     <th>Sold on</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <!--tfoot>
                                 <tr>
                                     <th>Id</th>
                                     <th>Model</th>
@@ -191,15 +191,28 @@
                                     <th>Action</th>
                                     <th>Sold on</th>
                                 </tr>
-                            </tfoot>
+                            </tfoot-->
                             <tbody>
                                 <?php foreach($vehicles as $vehicle) : ?>
-                                    
+                                    <?php 
+                                        $m_id = $vehicle['manufacturer_id'];
+                                        $mo_id = $vehicle['model_id'];
+                            			$query = $this->db->query("SELECT * FROM manufacturers WHERE id='$m_id'");
+                                        $r = $query->row();
+                            			$query2 = $this->db->query("SELECT * FROM models WHERE id='$mo_id'");
+                                        $s = $query2->row();
+                                    ?>
                                     <tr class="<?php if($vehicle['status'] != "available") echo 'danger'; else echo 'success'?>">
                                     
                                         <td><?php echo $vehicle['vehicle_id']; ?></td>
+                                    <?php
+                                        if($this->session->userdata("type") == "admin"){ ?>
                                         <td><?php echo $vehicle['model_name']; ?></td>
                                         <td><?php echo $vehicle['manufacturer_name']; ?></td>
+                                        <?php }else{    ?>
+                                        <td><?php echo $s->model_name; ?></td>
+                                        <td><?php echo $r->manufacturer_name; ?></td>
+                                        <?php } ?>
                                         <td><?php echo $vehicle['category']; ?></td>
                                         <td><?php $date = new DateTime($vehicle['add_date']); echo $date->format('m/d/Y'); ?></td>
                                         
@@ -211,11 +224,11 @@
                                             <?php if($vehicle['status']=="available") : ?>
                                                 <?php echo form_open('admin/vehicles/sell/'); ?>
                                                     <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['vehicle_id']; ?>">
-                                                    <button class="btn btn-xs btn-success" type="submit" name="btn-sell">Sell</button>
+                                                    <button class="btn btn-xs btn-success" type="submit" name="btn-sell">Sell Out to a Customer</button>
                                                 </form> 
                                             <?php endif ?>
                                                     
-                                            <?php if ($this->session->userdata('type') =="admin") : ?>
+                                            <?php if ($this->session->userdata('type')) : ?>
                                                 
                                                 <?php echo form_open('admin/Vehicles/DeleteVehicle/'); ?>
                                                     <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['vehicle_id']; ?>">
