@@ -18,8 +18,14 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-
+		if($this->session->userdata("type") == "admin"){
         $data['vehicles'] = $this->model_vehicle->getAll();
+		}else{
+			$user_id = $this->session->userdata("id");
+			$query = $this->db->query("SELECT * FROM vehicles WHERE user_id='$user_id'");
+//			$query = $this->db->get();
+			$data['vehicles'] = $query->result();
+		}
         $data['customers'] = $this->model_vehicle->customerList();
         $data['manufacturers_group'] = $this->model_vehicle->getAllByManufacturer();
         $data['manufacturers_group_sold'] = $this->model_vehicle->getAllByManufacturerSold();

@@ -17,7 +17,14 @@ class Vehicles extends CI_Controller {
 	public function index()
 	{
         $data['udata']=$this->session->userdata;
+		if($this->session->userdata("type") == "admin"){
         $data['vehicles'] = $this->model_vehicle->getAll();
+		}else{
+			$user_id = $this->session->userdata("id");
+			$query = $this->db->query("SELECT * FROM vehicles WHERE user_id='$user_id'");
+//			$query = $this->db->get();
+			$data['vehicles'] = $query->result_array();
+		}
         $data['manufacturers'] = $this->model_manufacturer->getAllManufacturers();
         $data['models'] = $this->model_car_model->getAllModels();
         
