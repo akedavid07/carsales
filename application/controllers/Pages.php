@@ -101,7 +101,7 @@ class Pages extends CI_Controller {
            $query = $this->db->get();
            
 
-               $result["vehicles"] = $query->result();
+               $result["vehicles"] = $query->result_array();
 
 		$this->load->view('public/partials/view_public_header.php');
 		$this->load->view("public/search",$result);
