@@ -16,28 +16,28 @@
 					<div class="col col-md-12" style="margin-top:10em;">
 						<form action="search" method="POST">
 							<div class="col col-md-4">
-								<input class="form form-control" type="text" name="" placeholder="Enter Vehicle Manufaturer or Model e.g Toyota" />
+								<input class="form form-control" type="text" name="car_type" placeholder="Enter Vehicle Manufaturer or Model e.g Toyota" />
 							</div>
 							<div class="col col-md-3">
-								<select name="" class="form form-control">
+								<select name="minimum_price" class="form form-control">
 										<option class="active">Min Price</option>
-										<option>₦ 12,000,000</option>
-										<option>₦ 10,000,000</option>
-										<option>₦ 5,000,000</option>
-										<option>₦ 2,000,000</option>
-										<option>₦ 1,000,000</option>
-										<option>₦ 500,000</option>
+										<option value="120000000">₦ 12,000,000</option>
+										<option value="10000000">₦ 10,000,000</option>
+										<option value="5000000">₦ 5,000,000</option>
+										<option value="2000000">₦ 2,000,000</option>
+										<option value="1000000">₦ 1,000,000</option>
+										<option value="500000">₦ 500,000</option>
 								</select>								
 							</div>
 							<div class="col col-md-3">
-								<select name="" class="form form-control">
+								<select name="maximum_price" class="form form-control">
 									<option class="active">Max Price</option>
-									<option>₦ 50,000,000</option>
-									<option>₦ 30,000,000</option>
-									<option>₦ 20,000,000</option>
-									<option>₦ 15,000,000</option>
-									<option>₦ 1,000,000</option>
-									<option>₦ 500,000</option>
+									<option value="50000000">₦ 50,000,000</option>
+									<option value="30000000">₦ 30,000,000</option>
+									<option value="20000000">₦ 20,000,000</option>
+									<option value="15000000">₦ 15,000,000</option>
+									<option value="1000000">₦ 1,000,000</option>
+									<option value="500000">₦ 500,000</option>
 								</select>								
 							</div>
 							<div class="col col-md-2">
