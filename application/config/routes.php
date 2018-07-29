@@ -44,3 +44,10 @@ $route['404_override'] = '';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+
+$route['search'] = 'Pages/search';
+$route['send_message'] = 'Pages/send_msg';
+$route['about'] = 'Pages/about';
+$route['contact'] = 'Pages/contact';
+$route['signup'] = 'Login/signup';
+$route['register'] = 'Login/register';
